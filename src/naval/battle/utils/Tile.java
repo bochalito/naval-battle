@@ -12,15 +12,49 @@ public class Tile {
         this.type = type;
     }
 
-    public Integer getY() { return y; }
+    public String draw() {
+        String tile;
+        switch (this.type) {
+            case HIT:
+                tile = "X";
+                break;
+            case SEA:
+                tile = "~";
+                break;
+            case MISS:
+                tile = "o";
+                break;
+            case SHIP:
+                tile = "s";
+                break;
+            default:
+                tile = null;
+                break;
+        }
+        return tile;
+    }
 
-    public void setY(Integer y) { this.y = y; }
+    public Integer getY() {
+        return y;
+    }
 
-    public Integer getX() { return x; }
+    public void setY(Integer y) {
+        this.y = y;
+    }
 
-    public void setX(Integer x) { this.x = x; }
+    public Integer getX() {
+        return x;
+    }
 
-    public TileType getType() { return type; }
+    public void setX(Integer x) {
+        this.x = x;
+    }
 
-    public void setType(TileType type) { this.type = type; }
+    public TileType getType() {
+        return type;
+    }
+
+    public void setType(TileType type) {
+        this.type = type;
+    }
 }
