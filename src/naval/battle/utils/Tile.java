@@ -6,32 +6,32 @@ public class Tile {
 
     private TileType type;
 
-    public Tile(Integer x, Integer y, TileType type) {
+    Tile(Integer x, Integer y, TileType type) {
         this.x = x;
         this.y = y;
         this.type = type;
     }
 
-    public String draw() {
+    void draw() {
         String tile;
         switch (this.type) {
             case HIT:
-                tile = "X";
+                tile = "\tX";
                 break;
             case SEA:
-                tile = "~";
+                tile = "\t~";
                 break;
             case MISS:
-                tile = "o";
+                tile = "\to";
                 break;
             case SHIP:
-                tile = "s";
+                tile = "\ts";
                 break;
             default:
                 tile = null;
                 break;
         }
-        return tile;
+        System.out.print(tile);
     }
 
     public Integer getY() {
