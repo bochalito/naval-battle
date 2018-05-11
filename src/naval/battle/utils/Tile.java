@@ -6,7 +6,7 @@ public class Tile {
 
     private TileType type;
 
-    Tile(Integer x, Integer y, TileType type) {
+    public Tile(Integer x, Integer y, TileType type) {
         this.x = x;
         this.y = y;
         this.type = type;

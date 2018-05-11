@@ -1,5 +1,6 @@
 package naval.battle.utils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Board {
@@ -38,6 +39,35 @@ public class Board {
     }
 
     public List<Tile> getAdjacentTiles(Tile tile) {
-        return null;
+        ArrayList<Tile> adjacentTiles = new ArrayList<>();
+
+        if (isCabin(tile.getX(), tile.getY(), length)){
+            if(isCabin(tile.getX() + 1, tile.getY(), length))
+                adjacentTiles.add(board[tile.getX()+1][tile.getY()]);
+            if(isCabin(tile.getX() - 1, tile.getY(), length))
+                adjacentTiles.add(board[tile.getX()-1][tile.getY()]);
+            if(isCabin(tile.getX(),  tile.getY() + 1, length))
+                adjacentTiles.add(board[tile.getX()][tile.getY()+1]);
+            if(isCabin(tile.getX(), tile.getY() - 1, length))
+                adjacentTiles.add(board[tile.getX()][tile.getY()-1]);
+            if(isCabin(tile.getX() - 1, tile.getY() + 1, length))
+                adjacentTiles.add(board[tile.getX()-1][tile.getY()+1]);
+            if(isCabin(tile.getX() + 1, tile.getY() - 1, length))
+                adjacentTiles.add(board[tile.getX()+1][tile.getY()-1]);
+            if(isCabin(tile.getX() + 1, tile.getY() + 1, length))
+                adjacentTiles.add(board[tile.getX()+1][tile.getY()+1]);
+            if(isCabin(tile.getX() - 1, tile.getY() - 1, length))
+                adjacentTiles.add(board[tile.getX()-1][tile.getY()-1]);
+        }
+
+        return adjacentTiles;
+    }
+
+    public boolean isCabin(int i, int j, int length) {
+        boolean flag = false;
+        if (i >= 0 && i <= length && j >= 0 && j <= length) {
+            flag = true;
+        }
+        return flag;
     }
 }
