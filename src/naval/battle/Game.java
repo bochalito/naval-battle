@@ -37,9 +37,11 @@ public class Game {
 //            System.out.println(e.getMessage());
 //        }
 
-        board.drawBoard();
-        player1.getStats();
         player1.fire(board, new Tile(4,3));
+        board.drawBoard();
+
+        player1.getStats();
+
 
     }
 }

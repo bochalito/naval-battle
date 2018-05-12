@@ -7,6 +7,7 @@ import naval.battle.ships.Ship;
 import naval.battle.utils.Board;
 import naval.battle.utils.Orientation;
 import naval.battle.utils.Tile;
+import naval.battle.utils.TileType;
 
 public class Player {
 
@@ -44,17 +45,29 @@ public class Player {
     void fire(Board board, Tile tile) {
         switch (board.getTile(tile).getType()) {
             case SEA:
-                System.out.println("[Player] ");
+                board.getTile(tile).setType(TileType.MISS);
+                shots++;
+                System.out.println(String.format("[Player] \t%s shoot in tile (%d, %d) %s.", name, tile.getX(), tile.getY(), board.getTile(tile).getType().toString()));
                 break;
             case SHIP:
+                board.getTile(tile).setType(TileType.HIT);
+                shots++;
+                successfulShots++;
+                System.out.println(String.format("[Player] \t%s shoot in tile (%d, %d) %s.", name, tile.getX(), tile.getY(), board.getTile(tile).getType().toString()));
                 break;
             case HIT:
+                board.getTile(tile).setType(TileType.HIT);
+                shots++;
+                repeatedShots++;
+                System.out.println(String.format("[Player] \t%s shoot in tile (%d, %d) Already %s.", name, tile.getX(), tile.getY(), board.getTile(tile).getType().toString()));
                 break;
             case MISS:
+                board.getTile(tile).setType(TileType.MISS);
+                shots++;
+                repeatedShots++;
+                System.out.println(String.format("[Player] \t%s shoot in tile (%d, %d) Already %s.", name, tile.getX(), tile.getY(), board.getTile(tile).getType().toString()));
                 break;
         }
-        System.out.println(board.getTile(tile).getType());
-
     }
 
     public String getName() {
