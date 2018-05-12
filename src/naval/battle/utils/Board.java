@@ -1,7 +1,13 @@
 package naval.battle.utils;
 
+import naval.battle.exceptions.AdjacentTilesException;
+import naval.battle.exceptions.OverlapTilesException;
+import naval.battle.exceptions.OversizeException;
+import naval.battle.ships.*;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Board {
 
@@ -63,12 +69,47 @@ public class Board {
         return adjacentTiles;
     }
 
+    public void placeAllShips() {
+        placeShipRandom(new Carrier());
+        placeShipRandom(new BattleShip());
+        placeShipRandom(new Cruiser());
+        placeShipRandom(new Destroyer());
+        placeShipRandom(new Submarine());
+
+
+    }
+
+    private void placeShipRandom(Ship ship) {
+        boolean flag;
+        do {
+            try {
+                ship.placeShip(this, new Tile(randomGenerator(0, boardSize), randomGenerator(0, boardSize)), getRandomOrientation());
+                flag = false;
+            } catch (OversizeException | OverlapTilesException | AdjacentTilesException e) {
+                flag = true;
+            }
+        } while (flag);
+
+    }
+
+    private Orientation getRandomOrientation() {
+        int randomOrientation = randomGenerator(0,1);
+        return (randomOrientation == 0) ? Orientation.HORIZONTAL : Orientation.VERTICAL;
+    }
+
     public boolean isInsideBoard(int i, int j) {
         boolean flag = false;
         if (i >= 0 && i <= boardSize-1 && j >= 0 && j <= boardSize-1) {
             flag = true;
         }
         return flag;
+    }
+
+    private int randomGenerator(int minimum, int maximum) {
+        Random rn = new Random();
+        int range = maximum - minimum + 1;
+        int randomNum =  rn.nextInt(range) + minimum;
+        return randomNum;
     }
 
     public boolean allShipsSunk() {
