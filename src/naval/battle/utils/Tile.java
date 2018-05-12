@@ -6,6 +6,11 @@ public class Tile {
 
     private TileType type;
 
+    public Tile(Integer x, Integer y) {
+        this.x = x;
+        this.y = y;
+    }
+
     public Tile(Integer x, Integer y, TileType type) {
         this.x = x;
         this.y = y;
