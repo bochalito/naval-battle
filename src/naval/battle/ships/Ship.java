@@ -1,4 +1,8 @@
-package naval.battle.utils;
+package naval.battle.ships;
+
+import naval.battle.utils.Board;
+import naval.battle.utils.Orientation;
+import naval.battle.utils.Tile;
 
 public abstract class Ship {
 
@@ -12,7 +16,7 @@ public abstract class Ship {
         this.shipSize = shipSize;
     }
 
-    public void placeShip(String[][] board, Tile startingTile, Orientation orientation) {
+    public void placeShip(Board board, Tile startingTile, Orientation orientation) {
 
 
     }

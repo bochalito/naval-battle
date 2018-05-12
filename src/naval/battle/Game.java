@@ -18,5 +18,7 @@ public class Game {
         for (int i =0; i < adjacent.size(); i++) {
             System.out.println("Adjacent Tile " + i + ": X=" + adjacent.get(i).getX() + " | Y=" + adjacent.get(i).getY());
         }
+
+        System.out.println(board.allShipsSunk());
     }
 }
