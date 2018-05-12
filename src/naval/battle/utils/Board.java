@@ -129,4 +129,12 @@ public class Board {
         }
         return allShipsSunk;
     }
+
+    public Tile getTile(Tile tile) {
+        return board[tile.getX()][tile.getY()];
+    }
+
+    public Tile getTileByCoordinates(Integer x, Integer y) {
+        return board[x][y];
+    }
 }

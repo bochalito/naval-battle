@@ -29,11 +29,11 @@ public abstract class Ship {
             throw new AdjacentTilesException(this.getClass().getSimpleName() + " is adjacent to another ship.");
         if (orientation == Orientation.VERTICAL) {
             for (int i = 0; i < shipSize; i++) {
-                board.board[startingTile.getX() + i][startingTile.getY()].setType(TileType.SHIP);
+                board.getTile(new Tile(startingTile.getX() + i, startingTile.getY())).setType(TileType.SHIP);
             }
         } else if (orientation == Orientation.HORIZONTAL) {
             for (int i = 0; i < shipSize; i++) {
-                board.board[startingTile.getX()][startingTile.getY() + i].setType(TileType.SHIP);
+                board.getTile(new Tile(startingTile.getX(), startingTile.getY() + i)).setType(TileType.SHIP);
             }
         }
         System.out.println("[Ship]  \t" + this.getClass().getSimpleName() + " placed successfully!");
@@ -68,14 +68,14 @@ public abstract class Ship {
 
         if (orientation == Orientation.VERTICAL) {
             for (int i = 0; i < shipSize; i++) {
-                if (board.board[startingTile.getX() + i][startingTile.getY()].getType() == TileType.SHIP) {
+                if (board.getTile(new Tile(startingTile.getX() + i, startingTile.getY())).getType() == TileType.SHIP) {
                     overlapsShip = true;
                     break;
                 }
             }
         } else if (orientation == Orientation.HORIZONTAL) {
             for (int i = 0; i < shipSize; i++) {
-                if (board.board[startingTile.getX()][startingTile.getY() + i].getType() == TileType.SHIP) {
+                if (board.getTile(new Tile(startingTile.getX(), startingTile.getY() + i)).getType() == TileType.SHIP) {
                     overlapsShip = true;
                     break;
                 }

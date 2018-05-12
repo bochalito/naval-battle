@@ -42,8 +42,9 @@ public class Player {
     }
 
     void fire(Board board, Tile tile) {
-        switch (board.board[tile.getX()][tile.getY()].getType()) {
+        switch (board.getTile(tile).getType()) {
             case SEA:
+                System.out.println("[Player] ");
                 break;
             case SHIP:
                 break;
@@ -52,7 +53,7 @@ public class Player {
             case MISS:
                 break;
         }
-        System.out.println(board.board[tile.getX()][tile.getY()].getType());
+        System.out.println(board.getTile(tile).getType());
 
     }
 
