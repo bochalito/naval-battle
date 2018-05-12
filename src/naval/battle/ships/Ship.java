@@ -36,7 +36,7 @@ public abstract class Ship {
                 board.board[startingTile.getX()][startingTile.getY() + i].setType(TileType.SHIP);
             }
         }
-        System.out.println(this.getClass().getSimpleName() + " placed successfully!");
+        System.out.println("[Ship]  \t" + this.getClass().getSimpleName() + " placed successfully!");
 
     }
 
@@ -92,17 +92,17 @@ public abstract class Ship {
         if (orientation == Orientation.VERTICAL) {
             for (int i = 0; i < shipSize; i++) {
                 List<Tile> tileAdjacentTiles = board.getAdjacentTiles(new Tile(startingTile.getX() + i, startingTile.getY()));
-                for (int j = 0; j < tileAdjacentTiles.size(); j++) {
-                    if (!adjacentTiles.contains(tileAdjacentTiles.get(j)))
-                        adjacentTiles.add(tileAdjacentTiles.get(j));
+                for (Tile tileAdjacentTile : tileAdjacentTiles) {
+                    if (!adjacentTiles.contains(tileAdjacentTile))
+                        adjacentTiles.add(tileAdjacentTile);
                 }
             }
         } else if (orientation == Orientation.HORIZONTAL) {
             for (int i = 0; i < shipSize; i++) {
                 List<Tile> tileAdjacentTiles = board.getAdjacentTiles(new Tile(startingTile.getX(), startingTile.getY() + i));
-                for (int j = 0; j < tileAdjacentTiles.size(); j++) {
-                    if (!adjacentTiles.contains(tileAdjacentTiles.get(j)))
-                        adjacentTiles.add(tileAdjacentTiles.get(j));
+                for (Tile tileAdjacentTile : tileAdjacentTiles) {
+                    if (!adjacentTiles.contains(tileAdjacentTile))
+                        adjacentTiles.add(tileAdjacentTile);
                 }
             }
         }
@@ -114,13 +114,5 @@ public abstract class Ship {
         }
 
         return isAdjacentToShip;
-    }
-
-    public Integer getShipSize() {
-        return shipSize;
-    }
-
-    public void setShipSize(Integer shipSize) {
-        this.shipSize = shipSize;
     }
 }

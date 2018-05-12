@@ -18,7 +18,10 @@ public class Game {
     public static void main(String[] args)  {
         Board board = new Board(8);
         board.initBoard();
-//        Carrier carrier = new Carrier();
+        Player player1 = new Player("Player 1", board);
+        player1.placeAllShips();
+
+        //        Carrier carrier = new Carrier();
 //        Destroyer destroyer = new Destroyer();
 //        BattleShip battleShip = new BattleShip();
 //        try {
@@ -33,9 +36,10 @@ public class Game {
 //        } catch (OversizeException | AdjacentTilesException | OverlapTilesException e) {
 //            System.out.println(e.getMessage());
 //        }
-        board.placeAllShips();
 
         board.drawBoard();
+        player1.getStats();
+        player1.fire(board, new Tile(4,3));
 
     }
 }

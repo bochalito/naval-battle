@@ -28,6 +28,7 @@ public class Board {
     }
 
     public void drawBoard() {
+        System.out.println();
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < boardSize; i++) {
             builder.append("\t").append(i);
@@ -42,6 +43,8 @@ public class Board {
             }
             System.out.println();
         }
+        System.out.println();
+
     }
 
     public List<Tile> getAdjacentTiles(Tile tile) {
@@ -75,18 +78,18 @@ public class Board {
         placeShipRandom(new Cruiser());
         placeShipRandom(new Destroyer());
         placeShipRandom(new Submarine());
-
-
+        System.out.println("[Board] \tAll ships placed successfully!");
     }
 
     private void placeShipRandom(Ship ship) {
-        boolean flag;
+        System.out.println("[Board] \tTrying to place ships...");
+        boolean flag = true;
         do {
             try {
                 ship.placeShip(this, new Tile(randomGenerator(0, boardSize), randomGenerator(0, boardSize)), getRandomOrientation());
                 flag = false;
             } catch (OversizeException | OverlapTilesException | AdjacentTilesException e) {
-                flag = true;
+                System.out.println("[Board] \tTrying to place ships...");
             }
         } while (flag);
 
@@ -108,8 +111,7 @@ public class Board {
     private int randomGenerator(int minimum, int maximum) {
         Random rn = new Random();
         int range = maximum - minimum + 1;
-        int randomNum =  rn.nextInt(range) + minimum;
-        return randomNum;
+        return rn.nextInt(range) + minimum;
     }
 
     public boolean allShipsSunk() {
