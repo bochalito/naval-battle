@@ -1,23 +1,37 @@
 package naval.battle.utils;
 
+// Class Tile
+// Represents a tile of the board.
 public class Tile {
 
+    // Data members
+    // Coordinates of tile
     private Integer x, y;
 
+    // Type of tile based on TileType enum
     private TileType type;
 
+    // Constructor
+    // Inputs:
+    // X, Y: Coordinates of tile
     public Tile(Integer x, Integer y) {
         this.x = x;
         this.y = y;
     }
 
+    // Constructor
+    // Inputs:
+    // X, Y, Type: Coordinates of tile and  type of tile
     public Tile(Integer x, Integer y, TileType type) {
         this.x = x;
         this.y = y;
         this.type = type;
     }
 
-    void draw() {
+    // Method: draw. Draws the tile on the command line
+    // Inputs:
+    // Boolean hidden: If true then the ships are hidden. Used to draw the opponents board
+    void draw(boolean hidden) {
         String tile;
         switch (this.type) {
             case HIT:
@@ -30,7 +44,10 @@ public class Tile {
                 tile = "\to";
                 break;
             case SHIP:
-                tile = "\ts";
+                if (hidden)
+                    tile = "\t~";
+                else
+                    tile = "\ts";
                 break;
             default:
                 tile = null;
@@ -39,26 +56,26 @@ public class Tile {
         System.out.print(tile);
     }
 
+    // Getter
+    // Returns the y coordinate of the tile
     public Integer getY() {
         return y;
     }
 
-    public void setY(Integer y) {
-        this.y = y;
-    }
-
+    // Getter
+    // Returns the x coordinate of the tile
     public Integer getX() {
         return x;
     }
 
-    public void setX(Integer x) {
-        this.x = x;
-    }
-
+    // Getter
+    // Returns the type of the tile
     public TileType getType() {
         return type;
     }
 
+    // Setter
+    // Sets the type of the tile
     public void setType(TileType type) {
         this.type = type;
     }
