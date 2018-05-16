@@ -35,19 +35,19 @@ public class Tile {
         String tile;
         switch (this.type) {
             case HIT:
-                tile = "\tX";
+                tile = "\t\u001B[32mX\u001B[0m";
                 break;
             case SEA:
-                tile = "\t~";
+                tile = "\t\u001B[34m~\u001B[0m";
                 break;
             case MISS:
-                tile = "\to";
+                tile = "\t\u001B[31mo\u001B[0m";
                 break;
             case SHIP:
                 if (hidden)
-                    tile = "\t~";
+                    tile = "\t\u001B[34m~\u001B[0m";
                 else
-                    tile = "\ts";
+                    tile = "\t\u001B[32ms\u001B[0m";
                 break;
             default:
                 tile = null;
