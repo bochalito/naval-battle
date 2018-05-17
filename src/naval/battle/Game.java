@@ -19,8 +19,12 @@ public class Game {
     // Data members
     // boardSize: represents the size of the boards.
     // noOfShots: the number of shots needed to be taken in order the game to stop
+    // playerName: the name of the player
+    // opponentName: the name of the computer
     private static Integer boardSize = 10;
-    private static Integer noOfShots = 5;
+    private static Integer noOfShots = 100;
+    private static String playerName = "YOU";
+    private static String opponentName = "COMPUTER";
 
     // Method main.
     // Creates new instances of the board, two new players.
@@ -34,8 +38,8 @@ public class Game {
         playersBoard.initBoard();
         Board computerBoard = new Board(boardSize);
         computerBoard.initBoard();
-        Player player = new Player("YOU", playersBoard);
-        Player computer = new Player("COMPUTER", computerBoard);
+        Player player = new Player(playerName, playersBoard);
+        Player computer = new Player(opponentName, computerBoard);
 
         if (randomPlace()) {
             player.placeAllShips();
